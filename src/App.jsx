@@ -1,10 +1,12 @@
 import React from 'react'
+import Counter from './components/Counter'
 
 function App() {
   return (
     <div>
-     <h1> This is a React app with Vite and Tailwind CSS.</h1>
+    <Counter/>
     </div>
+
   )
 }
 
