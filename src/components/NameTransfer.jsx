@@ -1,42 +1,36 @@
 import React, { useState, useEffect } from 'react';
 
 function NameTransfer() {
-  const initialNames = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
+  const [initialNames, setInitialNames] = useState(['Alice', 'Bob', 'Charlie', 'David', 'Eve']);
 
-  const [names, setNames] = useState(initialNames);
-  const [transferred, setTransferred] = useState([]);
+  const [transferredNames, setTransferredNames] = useState([]);
 
   useEffect(() => {
-    if (names.length === 0) return;
+    if (initialNames.length === 0) return;
 
-    const interval = setInterval(() => {
-      setNames(prevNames => {
-        if (prevNames.length === 0) return prevNames;
-
-        const firstName = prevNames[0];
-
-        // move name
-        setTransferred(prev => [...prev, firstName]);
-
-        return prevNames.slice(1); // remove first name
-      });
+    setTimeout(() => {
+      const firstName = initialNames[0]
+        setInitialNames(prev => prev.slice(1));
+      setTransferredNames(prev => [...prev, firstName]);
     }, 2000);
 
-    return () => clearInterval(interval);
-  }, [names]);
+
+  }, [initialNames]);
 
   return (
     <div>
       <h3>Original Names</h3>
       <ul style={{ backgroundColor: "red" }}>
-        {names.map((name, index) => (
+        {initialNames.map((name, index) => (
           <li key={index}>{name}</li>
         ))}
       </ul>
 
       <h3>Transferred Names</h3>
+
+      {transferredNames.length<1 && (<h1>No transfered name yet now</h1> )}
       <ul style={{ backgroundColor: "green" }}>
-        {transferred.map((name, index) => (
+        {transferredNames.map((name, index) => (
           <li key={index}>{name}</li>
         ))}
       </ul>
