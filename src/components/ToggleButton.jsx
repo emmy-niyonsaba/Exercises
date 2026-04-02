@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
 function ToggleButton() {
-    const [buttons, setButtons] = useState(Array(5).fill("red"))
+    const [buttons, setButtons] = useState(Array(8).fill("red"))
+    
 
     const toggleColor = (index) => {
         const newButtons = [...buttons]
@@ -11,15 +12,17 @@ function ToggleButton() {
     }
 
     return (
-        <div>
+        <div >
             {buttons.map((color, index) => (
+
                 <button
                     key={index}
                     onClick={() => toggleColor(index)}
-                    style={{ backgroundColor: color, margin: "5px" }}
+                    style={{ backgroundColor: color, margin: "5px",padding :"6px" }}
                 >
                     Button {index + 1}
                 </button>
+                
             ))}
         </div>
     )
