@@ -1,40 +1,42 @@
 import React, { useState, useEffect } from 'react';
 
 function NameTransfer() {
-  const [initialNames, setInitialNames] = useState([
-    'Alice',
-    'Bob',
-    'Charlie',
-    'David',
-    'Eve'
-  ]);
+  const initialNames = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
 
-  const [transferredNames, setTransferredNames] = useState([]);
+  const [names, setNames] = useState(initialNames);
+  const [transferred, setTransferred] = useState([]);
 
   useEffect(() => {
-    if (initialNames.length === 0) return;
+    if (names.length === 0) return;
 
-    setTimeout(() => {
-      const firstName = initialNames[0];
-      setInitialNames(prev => prev.slice(1)); 
-      setTransferredNames(prev => [...prev, firstName]); 
+    const interval = setInterval(() => {
+      setNames(prevNames => {
+        if (prevNames.length === 0) return prevNames;
+
+        const firstName = prevNames[0];
+
+        // move name
+        setTransferred(prev => [...prev, firstName]);
+
+        return prevNames.slice(1); // remove first name
+      });
     }, 2000);
 
-   
-  }, [initialNames]);
+    return () => clearInterval(interval);
+  }, [names]);
 
   return (
     <div>
       <h3>Original Names</h3>
       <ul style={{ backgroundColor: "red" }}>
-        {initialNames.map((name, index) => (
+        {names.map((name, index) => (
           <li key={index}>{name}</li>
         ))}
       </ul>
 
       <h3>Transferred Names</h3>
       <ul style={{ backgroundColor: "green" }}>
-        {transferredNames.map((name, index) => (
+        {transferred.map((name, index) => (
           <li key={index}>{name}</li>
         ))}
       </ul>
