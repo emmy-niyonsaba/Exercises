@@ -18,22 +18,30 @@ function NameTransfer() {
   }, [initialNames]);
 
   return (
-    <div>
-      <h3>Original Names</h3>
-      <ul style={{ backgroundColor: "red" }}>
-        {initialNames.map((name, index) => (
-          <li key={index}>{name}</li>
-        ))}
-      </ul>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <div>
+        <h3 className='text-xl font-bold text-red-500 mb-4'>Original Names</h3>
+        <ul className='bg-red-500 text-white rounded-lg shadow-lg p-4 space-y-2'>
+          {initialNames.map((name, index) => (
+            <li key={index} className='py-2 px-3 bg-red-700 rounded'>{name}</li>
+          ))}
+        </ul>
+      </div>
 
-      <h3>Transferred Names</h3>
-
-      {transferredNames.length<1 && (<h1>No transfered name yet now</h1> )}
-      <ul style={{ backgroundColor: "green" }}>
-        {transferredNames.map((name, index) => (
-          <li key={index}>{name}</li>
-        ))}
-      </ul>
+      <div>
+        <h3 className='text-xl font-bold text-red-500 mb-4'>Transferred Names</h3>
+        {transferredNames.length < 1 ? (
+          <div className='bg-white border-2 border-red-500 text-red-500 rounded-lg shadow-lg p-6 text-center'>
+            <p className='font-semibold'>No transferred names yet</p>
+          </div>
+        ) : (
+          <ul className='bg-white border-2 border-red-500 rounded-lg shadow-lg p-4 space-y-2'>
+            {transferredNames.map((name, index) => (
+              <li key={index} className='py-2 px-3 bg-red-50 text-red-500 rounded font-semibold'>{name}</li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
