@@ -3,6 +3,7 @@ import Counter from './components/Counter'
 import User from './components/User'
 import ToggleButton from './components/ToggleButton'
 import NameTransfer from './components/NameTransfer'
+import CardList from './components/CardList'
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
 
     <h1>Name Transfer </h1>
     <NameTransfer/>
+    <h1>CardList secciton </h1>
+    <CardList/>
     </div>
 
   )
