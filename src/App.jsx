@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
 
-      <h1>Emmanuel React Exercise WebAPP</h1>
+      <h1 className=' bg-amber-400'>Emmanuel React Exercise WebAPP</h1>
     <Counter/>
     <User/>
     <h1>Toggle ButtonColor </h1>

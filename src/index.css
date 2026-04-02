@@ -1,6 +1,6 @@
 
 
-
+@import "tailwindcss";
 .redButton{
     color: white;
     background-color: red;
